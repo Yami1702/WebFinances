@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebFinances</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-theme="light">
+    <header>
+        <h1>Controle Pessoal de Finanças</h1>
+        <button id="toggle-theme">Alternar Tema</button>
+    </header>
+    <main>
+        <form id="form">
+            <input type="text" id="nome" placeholder="Nome/Descrição" required>
+            <select id="categoria">
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+            </select>
+            <input type="date" id="data" required>
+            <input type="number" id="valor" placeholder="Valor" required>
+            <button type="submit">Adicionar Transação</button>
+        </form>
+
+        <section>
+            <h2>Resumo Financeiro</h2>
+            <p><strong>Total de Receitas:</strong> <span id="total-receitas">R$ 0,00</span></p>
+            <p><strong>Total de Despesas:</strong> <span id="total-despesas">R$ 0,00</span></p>
+            <p><strong>Saldo Final:</strong> <span id="saldo-final">R$ 0,00</span></p>
+        </section>
+
+        <section>
+            <h2>Lista de Transações</h2>
+            <label for="filtro-categoria">Filtro por Categoria:</label>
+            <select id="filtro-categoria">
+                <option value="">Todos</option>
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+            </select>
+            <label for="filtro-data">Filtro por Data:</label>
+            <input type="date" id="filtro-data">
+            <button id="aplicar-filtro">Aplicar Filtro</button>
+
+            <table id="transacoes-table">
+                <thead>
+                    <tr>
+                        <th>Nome/Descrição</th>
+                        <th>Categoria</th>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As transações serão inseridas aqui -->
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Gráfico de Receitas e Despesas</h2>
+            <canvas id="grafico"></canvas>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 WebFinances</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
